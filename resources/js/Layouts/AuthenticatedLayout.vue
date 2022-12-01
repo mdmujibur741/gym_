@@ -12,7 +12,7 @@ const showingNavigationDropdown = ref(false);
 
 <template>
   <div>
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-100 min-h-screen">
       <div class="grid lg:grid-cols-6 md:grid-cols-5">
         <!-- Side Nav -->
         <div class="md:min-h-screen shadow-md bg-white px-1">
@@ -55,7 +55,7 @@ const showingNavigationDropdown = ref(false);
             </li>
           </ul>
         </div>
-        <div class="lg:col-span-5 md:col-span-4">
+        <div class="lg:col-span-5 md:col-span-4 min-w-screen">
           <main>
             <slot />
           </main>

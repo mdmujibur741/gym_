@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('interest_package')->nullable();
             $table->date('dob')->nullable();
             $table->unsignedInteger('branch_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }
