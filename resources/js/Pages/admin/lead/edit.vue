@@ -30,7 +30,11 @@
 
                                      <div class="mb-3">
                                       <InputLabel for="interest_package" value="Interest Package"/>
-                                      <TextInput type="text" id="interest_package" v-model="form.interest_package" placeholder="Enter Interest Package"/>
+                                        <select v-model="form.interest_package" class="px-2 py-1 placeholder-slate-300 text-slate-600 relative border-blue-500 bg-white bg-white rounded-lg text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full">
+                                                      <option value="monthly">Monthly</option>
+                                                      <option value="yearly">Yearly</option>
+                                                      <option value="lifetime">LifeTime</option>
+                                        </select>
                                       <InputError :message="form.errors.interest_package"/>
                                      </div>
 
@@ -41,20 +45,13 @@
                                               <option value="female"> Female </option>
                                               <option value="other"> Other </option>
                                         </select>
-                                      <InputError :message="form.errors.gender"/>
-                                     
+                                      <InputError :message="form.errors.gender"/>                                    
                                      </div>
-                                     <div class="mb-3">
-                                      <InputLabel for="age" value="Age"/>
-                                      <TextInput type="number" id="age" v-model="form.age" placeholder="Enter Age"/>
-                                      <InputError :message="form.errors.age"/>
-                                 
-                                     </div>
+                                
                                      <div class="mb-3">
                                       <InputLabel for="dob" value="Date Of Birth"/>
                                       <TextInput type="date" id="dob" v-model="form.dob"/>
-                                      <InputError :message="form.errors.dob"/>
-                                    
+                                      <InputError :message="form.errors.dob"/>                                  
                                      </div>
 
                                      <div class="text-center">
@@ -95,7 +92,6 @@ import { Inertia } from '@inertiajs/inertia';
         email : props.lead?.email,
         phone :props.lead?.phone,
         gender : props.lead?.gender,
-       age : props.lead?.age,
         dob: props.lead?.dob,
         interest_package : props.lead?.interest_package,
   })
@@ -108,7 +104,6 @@ import { Inertia } from '@inertiajs/inertia';
           email : form.email,
           phone: form.phone,
           gender : form.gender,
-          age : form.age,
           dob : form.dob,
           interest_package : form.interest_package,
 

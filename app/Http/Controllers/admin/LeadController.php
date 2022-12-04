@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Lead;
-use Redirect;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Resources\LeadResource;
+use Carbon\Carbon;
 
 class LeadController extends Controller
 {
@@ -29,7 +30,6 @@ class LeadController extends Controller
               'email' => 'required|email',
               'phone' => 'required|min:11|max:15',
               'gender' => 'required',
-              'age' => 'required|integer',
               'dob' => 'required|date',
               'interest_package' => 'required',
 
@@ -38,19 +38,26 @@ class LeadController extends Controller
                'email.required' => 'Dude You Must Fill Email Input',
                'phone.required' => 'Dude You Must Fill Phone Number',
                'gender.required' => 'Dude You Must Fill Gender ',
-               'age.required' => 'Dude You Must Fill Age',
                'dob.required' => 'Dude You Must Fill Date Of Birth Input',
                'interest_package.required' => 'Dude You Must Fill Interest Package',
         ]);
-
+        $dob = Carbon::parse($request->dob);
          $lead = new Lead();
          $lead->fill($leadData);
          $lead->user_id = auth()->user()->id;
          $lead->branch_id =1;
+         $lead->age = $dob->age;
          $lead->save();
          return Redirect::back();
         
 
+    }
+
+    public function show(Lead $lead)
+    {
+
+          $lead->load(['reminder']);
+           return Inertia::render('admin/lead/show',compact('lead'));
     }
 
 
@@ -70,7 +77,6 @@ class LeadController extends Controller
             'email' => 'required|email',
             'phone' => 'required|min:11|max:15',
             'gender' => 'required',
-            'age' => 'required|integer',
             'dob' => 'required|date',
             'interest_package' => 'required',
 
@@ -79,14 +85,15 @@ class LeadController extends Controller
              'email.required' => 'Dude You Must Fill Email Input',
              'phone.required' => 'Dude You Must Fill Phone Number',
              'gender.required' => 'Dude You Must Fill Gender ',
-             'age.required' => 'Dude You Must Fill Age',
              'dob.required' => 'Dude You Must Fill Date Of Birth Input',
              'interest_package.required' => 'Dude You Must Fill Interest Package',
       ]);
 
+      $dob = Carbon::parse($request->dob);
       $lead->fill($leadData);
       $lead->user_id = auth()->user()->id;
       $lead->branch_id =1;
+      $lead->age = $dob->age; 
       $lead->update();
       return Redirect::route('admin.lead.index');
 

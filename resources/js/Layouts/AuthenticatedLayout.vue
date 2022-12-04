@@ -1,57 +1,47 @@
 <script setup>
 import { ref } from "vue";
-import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import Dropdown from "@/Components/Dropdown.vue";
-import DropdownLink from "@/Components/DropdownLink.vue";
-import NavLink from "@/Components/NavLink.vue";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/inertia-vue3";
+import SideNav from "@/Components/SideNav.vue";
 
-const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
   <div>
-    <div class="min-h-screen bg-gray-100 min-h-screen">
+    <div class="min-h-screen bg-gray-100">
       <div class="grid lg:grid-cols-6 md:grid-cols-5">
         <!-- Side Nav -->
-        <div class="md:min-h-screen shadow-md bg-white px-1">
+        <div class="md:min-h-screen shadow-md bg-white px-1 pt-12">
           <ul class="">
+
+
             <li class="">
-              <a
-                class="flex  items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
-                href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="dark"
-                 > Sidenav link 1</a
-              >
-            </li>
-       
-            <li class="">
-              <Link
-                class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
-                :href="route('admin.lead.index')"
-                data-mdb-ripple="true" data-mdb-ripple-color="dark"
-                >Lead</Link
-              >
+              <SideNav :href="route('dashboard')" :class="{ 'active': $page.url.startsWith('/dashboard') }">
+                <i class="fa-solid fa-gauge mr-2"></i> <b>DashBoard</b> 
+              </SideNav>
             </li>
 
             <li class="">
-              <Link
-                class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
-                :href="route('admin.profile.edit')"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="dark"
-                >Profile</Link >
+              <SideNav :href="route('admin.lead.index')" :class="{ 'active': $page.url.startsWith('/admin/lead') }">
+                <i class="fa-solid fa-chalkboard-user mr-2"></i> <b>Lead</b> 
+              </SideNav>
+            </li>
+
+            <li class="">
+              <SideNav :href="route('admin.reminder.index')" :class="{ 'active': $page.url.startsWith('/admin/reminder') }">
+                <i class="fa-solid fa-bell-slash mr-2"></i> <b> Reminder </b> 
+              </SideNav>
+            </li>
+
+            <li class="">
+              <SideNav :href="route('admin.profile.edit')" :class="{ 'active': $page.url.startsWith('/admin/profile') }">      
+                 <i class="fa-solid fa-id-card mr-2"></i> <b>Profile</b>
+              </SideNav>
             </li>
 
                  <li class="">
-              <Link
-                class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
-              :href="route('logout')" method="post" as="button"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="dark"
-                >Logout</Link>
+              <SideNav :href="route('logout')" method="post" as="button">
+              <i class="fa-solid fa-right-from-bracket mr-2"></i><b>Logout</b>
+             </SideNav>
             </li>
           </ul>
         </div>
@@ -64,3 +54,12 @@ const showingNavigationDropdown = ref(false);
     </div>
   </div>
 </template>
+
+
+<style scoped>
+       .active{
+                 background: #1D4ED8;  
+                 color: azure;
+                
+       }
+</style>
