@@ -24,7 +24,7 @@ class LeadFactory extends Factory
               'phone' => $this->faker->tollFreePhoneNumber,
               'age' => $this->faker->numberBetween(10,30),
               'gender' => $gender,
-              'interest_package' => $package,
+              'package_id' => $this->faker->numberBetween(1,3),
               'dob' => $this->faker->date(),
               'branch_id' => 1,
               'user_id' => 1,

@@ -29,17 +29,15 @@
 
 
                                      <div class="mb-3">
-                                      <InputLabel for="interest_package" value="Interest Package"/>
-                                        <select v-model="form.interest_package" class="px-2 py-1 placeholder-slate-300 text-slate-600 relative border-blue-500 bg-white bg-white rounded-lg text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full">
-                                                      <option value="monthly">Monthly</option>
-                                                      <option value="yearly">Yearly</option>
-                                                      <option value="lifetime">LifeTime</option>
+                                      <InputLabel for="package_id" value="Interest Package"/>
+                                        <select v-model="form.package_id" class="px-2 py-1 placeholder-slate-300 text-slate-600 relative border-blue-500 bg-white rounded-lg text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full">
+                                                      <option v-for="pack in package_data.data" :value="pack.id"> {{pack.name}} </option>
                                         </select>
-                                      <InputError :message="form.errors.interest_package"/>
+                                      <InputError :message="form.errors.package_id"/>
                                      </div>
 
                                      <div class="mb-3">
-                                        <select v-model="form.gender" class="px-2 py-1 placeholder-slate-300 text-slate-600 relative border-blue-500 bg-white bg-white rounded-lg text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full">
+                                        <select v-model="form.gender" class="px-2 py-1 placeholder-slate-300 text-slate-600 relative border-blue-500 bg-white rounded-lg text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full">
                                               <option value="">Choose Gender</option>
                                               <option value="male"> Male </option>
                                               <option value="female"> Female </option>
@@ -83,6 +81,7 @@ import { Inertia } from '@inertiajs/inertia';
     
   const props = defineProps({
             lead : Object,
+            package_data : Object
     })
 
 
@@ -93,7 +92,7 @@ import { Inertia } from '@inertiajs/inertia';
         phone :props.lead?.phone,
         gender : props.lead?.gender,
         dob: props.lead?.dob,
-        interest_package : props.lead?.interest_package,
+        package_id : props.lead?.package_id,
   })
 
 
@@ -105,7 +104,7 @@ import { Inertia } from '@inertiajs/inertia';
           phone: form.phone,
           gender : form.gender,
           dob : form.dob,
-          interest_package : form.interest_package,
+          package_id : form.package_id,
 
 
     })

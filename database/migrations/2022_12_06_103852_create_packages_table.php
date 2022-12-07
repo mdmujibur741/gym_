@@ -13,17 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('leads', function (Blueprint $table) {
+        Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->nullable();
-            $table->string('phone');
-            $table->integer('age');
-            $table->string('gender');
-            $table->date('dob')->nullable();
-            $table->unsignedInteger('package_id');
-            $table->unsignedInteger('branch_id');
-            $table->unsignedInteger('user_id');
+            $table->string('price');
             $table->timestamps();
         });
     }
@@ -35,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leads');
+        Schema::dropIfExists('packages');
     }
 };

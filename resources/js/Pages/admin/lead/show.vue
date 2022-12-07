@@ -20,7 +20,7 @@
               <p>Age : <strong>{{ lead.age }}</strong></p>
               <p>Email : <strong>{{ lead.email }}</strong></p>
               <p>Phone : <strong>{{ lead.phone }}</strong></p>
-              <p>Package : <strong>{{ lead.interest_package }}</strong></p>
+              <p>Package : <strong>{{ lead.package.name }} ({{lead.package.price}}&#36;)</strong></p>
             </div>
 
             <div v-if="lead.reminder.length > 0" class="bg-gary-50 mt-10">

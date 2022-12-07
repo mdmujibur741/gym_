@@ -33,6 +33,12 @@ import SideNav from "@/Components/SideNav.vue";
             </li>
 
             <li class="">
+              <SideNav :href="route('admin.package.index')" :class="{ 'active': $page.url.startsWith('/admin/package') }">
+                <i class="fa-solid fa-box-archive mr-2"></i> <b> Package </b> 
+              </SideNav>
+            </li>
+
+            <li class="">
               <SideNav :href="route('admin.profile.edit')" :class="{ 'active': $page.url.startsWith('/admin/profile') }">      
                  <i class="fa-solid fa-id-card mr-2"></i> <b>Profile</b>
               </SideNav>

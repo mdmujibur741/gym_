@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Package;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LeadResource extends JsonResource
+class PackageResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,17 +15,12 @@ class LeadResource extends JsonResource
     public function toArray($request)
     {
         // return parent::toArray($request);
-        return[
+        return [
             'id' => $this->id,
             'name' => $this->name,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'age' => $this->age,
-            'gender' => $this->gender,
-            'dob' => $this->dob,
-            'package_id' => $this->interest_package,
-            'branch_id' => $this->branch_id,
-             'package' => new PackageResource($this->whenLoaded('package')),
-        ]; 
+            'price' => $this->price,
+        ];
+             
+                
     }
 }

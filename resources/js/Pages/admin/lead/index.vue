@@ -25,7 +25,7 @@
       <td class="border border-slate-300 px-2 py-2"> {{lead.phone}} </td>
       <td class="border border-slate-300 px-2 py-2"> {{lead.gender}} </td>
       <td class="border border-slate-300 px-2 py-2">{{lead.age}}</td>
-      <td class="border border-slate-300 px-2 py-2">{{lead.interest_package}}</td>
+      <td class="border border-slate-300 px-2 py-2">{{lead.package.name}}</td>
       <td class="border border-slate-300 px-2 py-2">
             <div class="flex">
               <Link :href="route('admin.lead.show',lead.id)" class=" bg-blue-700 drop-shadow-lg rounded-lg px-2 py-1 text-white m-1"><i class="fa-solid fa-eye"></i></Link> 

@@ -8,30 +8,34 @@ use Inertia\Inertia;
 use App\Models\Lead;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Resources\LeadResource;
+use App\Http\Resources\PackageResource;
+use App\Models\Package;
 use Carbon\Carbon;
 
 class LeadController extends Controller
 {
     public function index()
     {
-        $leads = LeadResource::collection(Lead::latest()->paginate(15));
+        $leads = LeadResource::collection(Lead::with('package')->latest()->paginate(15));
         return Inertia::render('admin/lead/index',compact('leads'));
     }
 
     public function create()
     {
-        return Inertia::render('admin/lead/create');
+         $package = Package::all();
+        return Inertia::render('admin/lead/create',compact('package'));
     }
 
     public function store(Request $request)
     {
-       $leadData =  $request->validate([
+        
+        $leadData =  $request->validate([
               'name' => 'required|min:3',
               'email' => 'required|email',
               'phone' => 'required|min:11|max:15',
               'gender' => 'required',
               'dob' => 'required|date',
-              'interest_package' => 'required',
+              'package_id' => 'required',
 
         ],[
                'name.required' => 'Dude You Must Fill Name Input',
@@ -39,13 +43,16 @@ class LeadController extends Controller
                'phone.required' => 'Dude You Must Fill Phone Number',
                'gender.required' => 'Dude You Must Fill Gender ',
                'dob.required' => 'Dude You Must Fill Date Of Birth Input',
-               'interest_package.required' => 'Dude You Must Fill Interest Package',
+               'package_id.required' => 'Dude You Must Fill Interest Package',
         ]);
+
+        
         $dob = Carbon::parse($request->dob);
          $lead = new Lead();
          $lead->fill($leadData);
          $lead->user_id = auth()->user()->id;
          $lead->branch_id =1;
+         $lead->package_id = $request->package_id;
          $lead->age = $dob->age;
          $lead->save();
          return Redirect::back();
@@ -56,15 +63,15 @@ class LeadController extends Controller
     public function show(Lead $lead)
     {
 
-          $lead->load(['reminder']);
+          $lead->load(['reminder','package']);
            return Inertia::render('admin/lead/show',compact('lead'));
     }
 
 
     public function edit(Lead $lead)
     {
-         
-        return Inertia::render('admin/lead/edit',compact('lead'));
+        $package_data = PackageResource::collection(Package::all());   
+        return Inertia::render('admin/lead/edit',compact('lead','package_data'));
     }
 
 
@@ -78,7 +85,7 @@ class LeadController extends Controller
             'phone' => 'required|min:11|max:15',
             'gender' => 'required',
             'dob' => 'required|date',
-            'interest_package' => 'required',
+            'package_id' => 'required',
 
       ],[
              'name.required' => 'Dude You Must Fill Name Input',
@@ -86,7 +93,7 @@ class LeadController extends Controller
              'phone.required' => 'Dude You Must Fill Phone Number',
              'gender.required' => 'Dude You Must Fill Gender ',
              'dob.required' => 'Dude You Must Fill Date Of Birth Input',
-             'interest_package.required' => 'Dude You Must Fill Interest Package',
+             'package_id.required' => 'Dude You Must Fill Interest Package',
       ]);
 
       $dob = Carbon::parse($request->dob);
@@ -94,6 +101,7 @@ class LeadController extends Controller
       $lead->user_id = auth()->user()->id;
       $lead->branch_id =1;
       $lead->age = $dob->age; 
+      $lead->package_id = $request->package_id;
       $lead->update();
       return Redirect::route('admin.lead.index');
 
