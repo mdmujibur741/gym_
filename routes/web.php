@@ -9,14 +9,16 @@ use App\Http\Controllers\admin\LeadController;
 use App\Http\Controllers\admin\PackageController;
 use App\Http\Controllers\admin\ReminderController;
 use App\Http\Controllers\admin\ReminderUniqueController;
+use App\Http\Controllers\admin\SubcriberController;
+use App\Http\Controllers\admin\SubscribeController;
+use App\Http\Controllers\FrontendController;
 use Database\Factories\ReminderFactory;
 use Inertia\Inertia;
 
 
 
-Route::get('/', function () {
-    return Inertia::render('Welcome');
-});
+Route::get('/',[FrontendController::class,'index'])->name('web.home');
+Route::get('/about',[FrontendController::class,'about'])->name('web.about');
 
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 

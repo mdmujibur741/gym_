@@ -46,7 +46,7 @@
                     </td>
                     <td class="border border-slate-300 px-2 py-2">{{ rem.status }}</td>
                     <td class="border border-slate-300 px-2 py-2">{{ rem.note }}</td>
-                    <td class="border border-slate-300 px-2 py-2"> <Link :href="route('admin.reminder.destroy',rem.id)" method="delete" class="bg-blue-700 rounded-lg p-2 text-white"><i class="fa-solid fa-trash"></i></Link> </td>
+                    <td class="border border-slate-300 px-2 py-2"> <Link :href="route('admin.reminder.destroy',rem.id)" method="delete" class="bg-blue-700 rounded-xl py-2 px-4 text-white"><i class="fa-solid fa-trash"></i></Link> </td>
                   </tr>
                 </tbody>
               </table>
@@ -55,8 +55,11 @@
                        <h3>NO Reminder Found </h3>
             </div>
             <div class="text-end mt-10">
-             <Link :href="route('admin.reminder.unique',lead.id)" class="bg-blue-500 py-2 px-3 text-white mt-12 rounded-xl"> ADD REMINDER </Link>
-             
+                 
+            
+                 
+           
+             <Link :href="route('admin.reminder.unique',lead.id)" class="bg-blue-700 py-2 px-3 text-white mt-12 rounded-xl"> ADD REMINDER </Link>
             </div> 
         
                
