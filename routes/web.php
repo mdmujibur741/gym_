@@ -16,14 +16,15 @@ use Database\Factories\ReminderFactory;
 use Inertia\Inertia;
 
 
-
+// Frontend Route
 Route::get('/',[FrontendController::class,'index'])->name('web.home');
 Route::get('/about',[FrontendController::class,'about'])->name('web.about');
+Route::get('/contact',[FrontendController::class,'contact'])->name('web.contact');
 
+
+// Admin Route
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->prefix('admin/')->name('admin.')->group(function () {
-
                 // Auth User Route 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

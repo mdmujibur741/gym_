@@ -17,15 +17,15 @@
       <th class="border border-slate-300 px-2 py-2">Action</th>
     </tr>
   </thead>
-  <tbody v-if="(reminders.data.length > 0)">
+   <tbody v-if="(reminders.data.length > 0)">
     <tr v-for="(rem, index) in reminders.data" :key="rem.index">
       <td class="border border-slate-300 px-2 py-2"> {{(index+1)}} </td>
       <td class="border border-slate-300 px-2 py-2"> {{rem.lead.name}} </td>
-      <td class="border border-slate-300 px-2 py-2"> {{rem.lead.phone}} </td>
-      <td class="border border-slate-300 px-2 py-2"> {{rem.reminder}} </td>
+       <td class="border border-slate-300 px-2 py-2"> {{rem.lead.phone}} </td>
+     <td class="border border-slate-300 px-2 py-2"> {{rem.reminder}} </td>
       <td class="border border-slate-300 px-2 py-2"> {{rem.reminder_date}} </td>
       <td class="border border-slate-300 px-2 py-2">{{rem.note}}</td>
-      <td class="border border-slate-300 px-2 py-2">{{rem.status}}</td>
+      <td class="border border-slate-300 px-2 py-2">{{rem.status}}</td> 
       <td class="border border-slate-300 px-2 py-2"> 
               <div class="flex">
                 <Link :href="route('admin.reminder.unique',rem.id)" class=" bg-indigo-800 drop-shadow-lg rounded-lg px-2 py-1 text-white m-1"> <i class="fa-solid fa-square-plus"></i></Link> 
@@ -35,12 +35,12 @@
       </td>
     </tr>
                
-  </tbody>
+  </tbody> 
   <tbody v-else>
     <tr>
               <h2>NO DATA FOUND</h2>
      </tr>
-  </tbody>
+  </tbody> 
 </table>
 </div>
 

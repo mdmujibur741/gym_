@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reminders', function (Blueprint $table) {
+           
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('lead_id');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('lead_id')->constrained()->cascadeOnDelete();
             $table->longText('reminder')->nullable();
             $table->date('reminder_date')->nullable();
             $table->longText('note')->nullable();

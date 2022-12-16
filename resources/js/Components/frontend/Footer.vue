@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="lg:h-auto md:min-h-fit bg-gray-200">
-       <div class="grid lg:grid-cols-3 md:grid-cols-6 gap-4 items-center lg:h-64 px-8">
+  <div class="min-h-[20vh] bg-gray-200 p-7">
+       <div class="grid md:grid-cols-3 gap-4 items-center lg:h-64 px-8">
            
                 <div class="mb-3">
                   <h2 class="text-center text-3xl mb-6 text-semibold">ABOUT</h2>

@@ -26,7 +26,6 @@ class LeadFactory extends Factory
               'gender' => $gender,
               'package_id' => $this->faker->numberBetween(1,3),
               'dob' => $this->faker->date(),
-              'branch_id' => 1,
               'user_id' => 1,
 
         ];

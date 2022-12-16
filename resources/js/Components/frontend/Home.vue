@@ -1,5 +1,6 @@
 <script setup>
 
+import { Link } from '@inertiajs/inertia-vue3';
 
 </script>
 
@@ -13,7 +14,7 @@
                     </p>
 
                    <div class="flex justify-center">
-                    <button class="bg-white p-2 rounded-xl text-black"> Contact Us </button></div>
+                    <Link :href="route('web.contact')" class="bg-yellow-300 px-7 py-3 rounded-xl text-black drop-shadow-2xl"> <b>Contact Us</b> </Link></div>
                  </div>
            </div>
     </div>
@@ -25,7 +26,7 @@
 
    .home{
          min-height: 80vh;
-         background-image: linear-gradient(135deg, rgba(68, 0, 255, 0.4) 60%, rgba(106, 0, 255, 0.6)),url('../../../../public/storage/home/home.jpg');
+         background-image: linear-gradient(135deg, rgba(68, 0, 255, 0.4) 60%, rgba(106, 0, 255, 0.6)),url('../../../../public/storage/image/home.jpg');
          background-repeat: no-repeat;
          background-size: cover;
          background-position: center;

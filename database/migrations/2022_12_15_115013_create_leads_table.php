@@ -21,9 +21,8 @@ return new class extends Migration
             $table->integer('age');
             $table->string('gender');
             $table->date('dob')->nullable();
-            $table->unsignedInteger('package_id');
-            $table->unsignedInteger('branch_id');
-            $table->unsignedInteger('user_id');
+            $table->foreignId('package_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

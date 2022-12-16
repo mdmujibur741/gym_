@@ -16,4 +16,10 @@ class FrontendController extends Controller
    {
       return Inertia::render('Frontend/about');
    }
+
+   public function contact()
+   {
+     
+      return Inertia::render('Frontend/contact');
+   }
 }
