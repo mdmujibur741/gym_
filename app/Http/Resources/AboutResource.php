@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SubscribeResource extends JsonResource
+class AboutResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,6 +14,13 @@ class SubscribeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+         
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'image' => asset('/storage/'. $this->image),
+
+        ];
     }
 }

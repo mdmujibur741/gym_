@@ -1,3 +1,51 @@
+<script setup>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import TextInput from '@/Components/TextInput.vue';
+import { useForm } from '@inertiajs/inertia-vue3';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { Inertia } from '@inertiajs/inertia';
+import { useToastr } from '../../../tostr';
+
+
+const toastr = useToastr();
+
+
+const form = useForm({
+  reminder : props.reminder?.reminder,
+  note : props.reminder?.note,
+  reminder_date : props.reminder?.reminder_date,
+  status : props.reminder?.status,
+  lead_id : props.reminder?.lead_id,     //That Lead Id For Reminder
+  
+})
+
+const submit = () => {
+       Inertia.post(`/admin/reminder/${props.reminder.id}`,{
+           _method : "put",
+           reminder : form.reminder,
+           note : form.note,
+           reminder_date : form.reminder_date,
+           status : form.status,
+           lead_id : form.lead_id,
+        },{
+            onSuccess: () => cleanForm()
+        })
+}
+
+
+
+function cleanForm(){
+       toastr.success("Reminder Data Update Successfully");
+}
+
+const props = defineProps({
+  reminder : Object
+})
+
+</script>
+
 <template>
   <div class="bg-blue-300">
   <AuthenticatedLayout>
@@ -59,40 +107,3 @@
 </template>
 
 
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/inertia-vue3';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { isIntegerKey } from '@vue/shared';
-import { Inertia } from '@inertiajs/inertia';
-
-
-const form = useForm({
-  reminder : props.reminder?.reminder,
-  note : props.reminder?.note,
-  reminder_date : props.reminder?.reminder_date,
-  status : props.reminder?.status,
-  lead_id : props.reminder?.lead_id,     //That Lead Id For Reminder
-  
-})
-
-const submit = () => {
-       Inertia.post(`/admin/reminder/${props.reminder.id}`,{
-           _method : "put",
-           reminder : form.reminder,
-           note : form.note,
-           reminder_date : form.reminder_date,
-           status : form.status,
-           lead_id : form.lead_id,
-        })
-}
-
-
-const props = defineProps({
-  reminder : Object
-})
-
-</script>

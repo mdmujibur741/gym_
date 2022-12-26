@@ -77,6 +77,7 @@
  import { useForm } from '@inertiajs/inertia-vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Inertia } from '@inertiajs/inertia';
+import {useToastr} from '../../../tostr.js';
  
     
   const props = defineProps({
@@ -84,6 +85,7 @@ import { Inertia } from '@inertiajs/inertia';
             package_data : Object
     })
 
+    const toastr = useToastr();
 
 
   const form = useForm({
@@ -107,6 +109,8 @@ import { Inertia } from '@inertiajs/inertia';
           package_id : form.package_id,
 
 
+    },{
+          onSuccess : () =>  toastr.success("Lead Data Update Successfully ")
     })
  }
 

@@ -1,6 +1,11 @@
 <script setup>
          import TopNav from '@/Components/frontend/TopNav.vue';
          import Footer from '@/Components/frontend/Footer.vue';
+
+
+         defineProps({
+                GFooter : Object
+         })
 </script>
 
 <template>
@@ -13,6 +18,6 @@
                        <slot />
                      </main>
                    <!-- Footer -->
-                   <Footer/>
+                   <Footer :GFooter="GFooter"/>
         </div>
 </template>

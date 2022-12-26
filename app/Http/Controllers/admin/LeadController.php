@@ -51,7 +51,6 @@ class LeadController extends Controller
          $lead = new Lead();
          $lead->fill($leadData);
          $lead->user_id = auth()->user()->id;
-         $lead->branch_id =1;
          $lead->package_id = $request->package_id;
          $lead->age = $dob->age;
          $lead->save();
@@ -99,7 +98,6 @@ class LeadController extends Controller
       $dob = Carbon::parse($request->dob);
       $lead->fill($leadData);
       $lead->user_id = auth()->user()->id;
-      $lead->branch_id =1;
       $lead->age = $dob->age; 
       $lead->package_id = $request->package_id;
       $lead->update();

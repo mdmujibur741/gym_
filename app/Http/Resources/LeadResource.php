@@ -25,7 +25,6 @@ class LeadResource extends JsonResource
             'gender' => $this->gender,
             'dob' => $this->dob,
             'package_id' => $this->interest_package,
-            'branch_id' => $this->branch_id,
              'package' => new PackageResource($this->whenLoaded('package')),
         ]; 
     }

@@ -24,14 +24,16 @@
                 <th class="border border-slate-300 px-2 py-2">Serial</th>
                 <th class="border border-slate-300 px-2 py-2">Name</th>
                 <th class="border border-slate-300 px-2 py-2">Price</th>
+                <th class="border border-slate-300 px-2 py-2">Description</th>
                 <th class="border border-slate-300 px-2 py-2">Action</th>
               </tr>
             </thead>
             <tbody v-if="(package_data.data.length > 0)">
               <tr v-for="(pack, index) in package_data.data" :key="pack.index">
                 <td class="border border-slate-300 px-2 py-2">{{ index + 1 }}</td>
-                <td class="border border-slate-300 px-2 py-2">{{ pack.name }}</td>
+                <td class="border border-slate-300 px-2 py-2">{{ pack.name }}</td>     
                 <td class="border border-slate-300 px-2 py-2">{{ pack.price }}</td>
+                <td class="border border-slate-300 px-2 py-2">{{ pack.description }}</td>
 
                 <td class="border border-slate-300 px-2 py-2">
                   <div class="flex">

@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from "vue";
 import DashNav from "@/Components/DashNav.vue";
+import { useToastr } from "../tostr";
+
+const toastr = useToastr();
 
 </script>
 

@@ -1,10 +1,13 @@
 <script setup>
         import { Link } from '@inertiajs/inertia-vue3';
+        defineProps({
+             GFooter : Object
+        })
 </script>
 
 <template>
   <div class="min-h-[20vh] bg-gray-200 p-7">
-       <div class="grid md:grid-cols-3 gap-4 items-center lg:h-64 px-8">
+       <div v-for="fo in GFooter.footer.data" :key="fo.id" class="grid md:grid-cols-3 gap-4 items-center lg:h-64 px-8">
            
                 <div class="mb-3">
                   <h2 class="text-center text-3xl mb-6 text-semibold">ABOUT</h2>
@@ -16,16 +19,15 @@
              
                 <div class="mb-3">
                   <h2 class="text-3xl mb-6 text-semibold">ADDRESS</h2>
-                 <p> Address: 73 Canal Street, New York, NY</p>
-                   <p>Tel: +01 2=1234567890</p>
-                    <p>Fax: +01 9876543210</p>
-                <p>Email:Demo@vigorfit.com</p>
-                <div class="flex gap-5 justify-start my-5">
-                    <p> <Link><i class="fa-brands fa-facebook  fa-2xl text-blue-900"></i></Link> </p>
-                    <p> <Link><i class="fa-brands fa-square-twitter fa-2xl text-blue-900"></i></Link> </p>
-                    <p> <Link><i class="fa-brands fa-instagram fa-2xl text-blue-900"></i></Link> </p>
-                    <p> <Link><i class="fa-brands fa-youtube fa-2xl text-blue-900"></i></Link> </p>
-                    <p> <Link><i class="fa-brands fa-linkedin fa-2xl text-blue-900"></i></Link> </p>
+                 <p> Address: {{ fo.address }} </p>
+                  <p>Tel: {{ fo.phone }} </p>
+                <p>Email: {{ fo.email }} </p>
+                 <div class="flex gap-5 justify-start my-5">
+                    <p> <a :href="fo.facebook"><i class="fa-brands fa-facebook  fa-2xl text-blue-900"></i></a> </p>
+                    <p> <a :href="fo.twitter"><i class="fa-brands fa-square-twitter fa-2xl text-blue-900"></i></a> </p>
+                    <p> <a :href="fo.instagram"><i class="fa-brands fa-instagram fa-2xl text-blue-900"></i></a> </p>
+                    <p> <a :href="fo.youtube"><i class="fa-brands fa-youtube fa-2xl text-blue-900"></i></a> </p>
+                    <p> <a :href="fo.linkedin"><i class="fa-brands fa-linkedin fa-2xl text-blue-900"></i></a> </p> 
                 </div>
               </div>
 
@@ -33,11 +35,11 @@
               <div class="mb-3">
                   <h2 class="text-3xl mb-6 text-semibold"> OUR TIMING </h2>
                    
-               <p> Monday 8:00 am - 9:00 pm</p>
-               <p> Tuesday 8:00 am - 9:00 pm</p>
-               <p> Thursday 8:00 am - 9:00 pm</p>
-               <p> Friday 8:00 am - 9:00 pm</p>
-               <p> Saturday 8:00 am - 9:00 pm</p>
+               <p> Monday   {{ fo.op_time }} - {{ fo.cl_time }}</p>
+               <p> Tuesday  {{ fo.op_time }} - {{ fo.cl_time }}</p>
+               <p> Thursday  {{ fo.op_time }} - {{ fo.cl_time }}</p>
+               <p> Friday   {{ fo.op_time }} - {{ fo.cl_time }}</p>
+               <p> Saturday  {{ fo.op_time }} - {{ fo.cl_time }}</p>
                <p> Sunday CLOSED</p>
 
               </div>

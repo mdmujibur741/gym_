@@ -25,6 +25,7 @@ class ReminderController extends Controller
 
     public function update(Request $request, Reminder $reminder)
     {
+
         $request->validate([
             'lead_id' => 'required',
              'reminder_date' => 'required|date',

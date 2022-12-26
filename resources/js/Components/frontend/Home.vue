@@ -1,37 +1,48 @@
 <script setup>
 
 import { Link } from '@inertiajs/inertia-vue3';
+defineProps({
+         homes : Object
+})
 
 </script>
 
 <template>
     <div class="bg-blue-100">
-           <div class="home flex items-center">
-                  <div class="new text-white">
-                    <h1 class="font-bold text-center text-7xl">The healthy <br> way of life company</h1>
+         <div v-if="homes.data.length > 0">
+            <div v-for="hom in homes.data" :key="hom.id" class="home flex items-center min-h-[80vh] bg-no-repeat bg-cover bg-center"  :style="{ 'background-image': 'linear-gradient(rgba(0, 0, 255, 0.7), rgba(0, 0, 71, 0.8)), url(' + hom.image + ')' }">
+                  <div class="new text-white p-6">
+                    <div class="p-10">
+                        <h1 class="font-bold text-center text-7xl" style="white-space: pre-line;"> {{ hom.title }} </h1>
                     <p class="text-justify p-6">
-                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem vel autem odio laboriosam molestias, quae eveniet, ea maxime ab quod omnis provident recusandae asperiores praesentium sed mollitia pariatur nisi unde?
+                          {{ hom.description }}
                     </p>
 
+                    </div>
                    <div class="flex justify-center">
                     <Link :href="route('web.contact')" class="bg-yellow-300 px-7 py-3 rounded-xl text-black drop-shadow-2xl"> <b>Contact Us</b> </Link></div>
                  </div>
            </div>
+         </div>
+
+         <div v-else>
+            <div class="new text-white p-6">
+                    <div class="p-10">
+                        <h1 class="font-bold text-center text-7xl"> This Is Demo Default Title </h1>
+                    <p class="text-justify p-6">
+                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis placeat nostrum itaque sunt, pariatur blanditiis.
+                    </p>
+
+                    </div>
+                   <div class="flex justify-center">
+                    <Link :href="route('web.contact')" class="bg-yellow-300 px-7 py-3 rounded-xl text-black drop-shadow-2xl"> <b>Contact Us</b> </Link></div>
+                 </div>
+         </div>
+
+          
+          
     </div>
 </template>
 
 
 
-<style scoped>
-
-   .home{
-         min-height: 80vh;
-         background-image: linear-gradient(135deg, rgba(68, 0, 255, 0.4) 60%, rgba(106, 0, 255, 0.6)),url('../../../../public/storage/image/home.jpg');
-         background-repeat: no-repeat;
-         background-size: cover;
-         background-position: center;
-   }
- 
-
-
-</style>

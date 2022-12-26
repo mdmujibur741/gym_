@@ -25,6 +25,13 @@
             <InputError :message="form.errors.price" />
           </div>
 
+          <div class="mb-3">
+            <InputLabel for="description" value="Description" />
+              <textarea id="description" v-model="form.description" rows="3" class="w-full rounded-xl"></textarea>
+            <InputError :message="form.errors.description" />
+          </div>
+
+
 
           <div class="text-center">
             <PrimaryButton
@@ -51,16 +58,17 @@ import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { useForm, Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
-
+import { useToastr } from "../../../tostr";
 
 const props = defineProps({
     package : Object
 })
 
-
+const toastr = useToastr();
 const form = useForm({
   name: props.package?.name,
   price: props.package?.price,
+  description: props.package?.description,
 });
 
 const submit = () => {
@@ -68,6 +76,9 @@ const submit = () => {
              _method : "put",
              name : form.name,
              price : form.price,
+             description : form.description,
+     },{
+         onSuccess: () =>  toastr.success("Package Update Successfully"),
      })
 }
 

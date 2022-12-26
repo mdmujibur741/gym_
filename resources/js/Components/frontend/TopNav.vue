@@ -36,26 +36,26 @@ const mobileMenu = ref("false");
         :class="{ hidden: mobileMenu }"
       >
         <ul
-          class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          class="flex flex-col p-4 mr-2 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-2 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
           <li>
             <Link :href="route('web.home')" 
-            class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page"
+            class="block text-white md:px-3 md:py-2 p-0  md:bg-transparent rounded-xl md:text-blue-700 md:p-0 dark:text-white" aria-current="page" :class="{ 'active': $page.url === '/' }"
               >Home</Link
             >
           </li>
           <li>
             <Link
-              :href="route('web.about')"
-              class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              :href="route('web.about')" :class="{ 'active': $page.url === '/about' }"
+              class="block text-gray-700 md:px-3 md:py-2 p-0    hover:bg-gray-100 rounded-xl md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
               >About</Link
             >
           </li>
          
           <li>
             <Link
-              :href="route('web.contact')"
-              class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              :href="route('web.contact')" :class="{ 'active': $page.url === '/contact' }"
+              class="block text-gray-700 md:px-3 md:py-2 p-0   hover:bg-gray-100 rounded-xl md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
               >Contact</Link
             >
           </li>
@@ -64,3 +64,13 @@ const mobileMenu = ref("false");
     </div>
   </nav>
 </template>
+
+
+<style scoped>
+          .active{
+                    background: #3b0edb;
+                    color: aliceblue;
+                   
+                   
+          }
+</style>

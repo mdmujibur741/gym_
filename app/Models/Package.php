@@ -9,7 +9,7 @@ class Package extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price'];
+    protected $fillable = ['name', 'price','description'];
 
     // Relation With Lead table
     public function lead()

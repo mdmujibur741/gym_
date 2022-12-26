@@ -1,3 +1,45 @@
+
+<script setup>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import TextInput from '@/Components/TextInput.vue';
+import { useForm } from '@inertiajs/inertia-vue3';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { useToastr } from '../../../tostr';
+
+const toastr = useToastr();
+
+const form = useForm({
+  reminder : '',
+  note : '',
+  reminder_date : '',
+  status : '',
+  lead_id : props.lead,     //That Lead Id For Reminder
+  
+})
+
+const submit = () => {
+     form.post(route('admin.reminder.unique.store'),{
+        onSuccess : () => cleanForm()
+     })
+}
+
+function cleanForm(){
+  form.reset(),
+  toastr.success('Reminder Data Added Successfully')
+}
+
+
+
+const props = defineProps({
+  lead : Number
+})
+
+</script>
+
+
+
 <template>
   <div class="bg-blue-300">
   <AuthenticatedLayout>
@@ -58,33 +100,3 @@
   </div>
 </template>
 
-
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/inertia-vue3';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { isIntegerKey } from '@vue/shared';
-
-
-const form = useForm({
-  reminder : '',
-  note : '',
-  reminder_date : '',
-  status : '',
-  lead_id : props.lead,     //That Lead Id For Reminder
-  
-})
-
-const submit = () => {
-     form.post(route('admin.reminder.unique.store'))
-}
-
-
-const props = defineProps({
-  lead : Number
-})
-
-</script>

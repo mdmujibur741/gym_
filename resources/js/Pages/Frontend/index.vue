@@ -4,21 +4,28 @@ import Home from "@/Components/frontend/Home.vue";
 import FitCard from "@/Components/frontend/FitnessCard.vue";
 import FrontendLayout from "@/Layouts/FrontendLayout.vue";
 import Provide from "@/Components/frontend/Provide.vue";
+
+defineProps({
+       homes : Object,
+       GCard : Object,
+       provide : Object,
+       GFooter : Object
+})
 </script>
 
 <template>
   <Head title="Home" />
   <div class="">
-    <FrontendLayout>
+    <FrontendLayout :GFooter="GFooter">
     
       <!-- Home Section -->
-      <Home />
+      <Home :homes ="homes"/>
 
       <!-- Fitness Card -->
-      <FitCard />
+      <FitCard :GCard="GCard"/>
 
       <!-- Provide  -->
-      <Provide />
+      <Provide :provide="provide"/>
 
     </FrontendLayout>
   </div>

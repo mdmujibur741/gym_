@@ -79,11 +79,13 @@ import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import toastr from "toastr";
+import {useToastr} from '../../../tostr.js';
 
 defineProps({
   package: Object,
 });
+
+const toastr = useToastr();
 
 const form = useForm({
   name: "",
@@ -102,7 +104,6 @@ const submit = () => {
 
 function cleanForm() {
   form.reset();
-  this.success = true;
-  toastr.success("Lead Data Added SuccessfullY ");
+  toastr.success("Lead Data Added Successfully ");
 }
 </script>

@@ -27,6 +27,7 @@ class PackageController extends Controller
     {
         $data = $request->validate([
                 'name' => 'required|min:2',
+                'description' => 'min:15',
                 'price' => 'required|min:2',
           ]);
 
@@ -50,6 +51,7 @@ class PackageController extends Controller
         $data = $request->validate([
             'name' => 'required|min:2',
             'price' => 'required|min:2',
+            'description' => 'min:15',
          ]);
 
          $package->fill($data)->update();
