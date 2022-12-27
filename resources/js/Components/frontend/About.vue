@@ -9,7 +9,7 @@
 <section class="about bg-lime-100 min-h-[80vh] p-8">
                 <div v-if="about.data.length > 0" v-for="ab in about.data" :key="ab.id"  class="grid md:grid-cols-2 items-center min-h-[80vh] gap-8">
                      <div class="">
-                          <img :src="ab.image" alt="" class="rounded-3xl drop-shadow-2xl w-full h-[400px]">
+                          <img :src="ab.image" alt="" class="rounded-3xl drop-shadow-2xl border-8 border-indigo-100 w-full h-[400px]">
                      </div>
                      <div class="">
                                     <h2 class="text-4xl font-semibold">{{ ab.title }} </h2>

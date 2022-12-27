@@ -23,7 +23,7 @@
               <p>Package : <strong>{{ lead.package.name }} ({{lead.package.price}}&#36;)</strong></p>
             </div>
 
-            <div v-if="lead.reminder.length > 0" class="bg-gary-50 mt-10">
+            <div v-if="lead.reminder.length > 0" class="bg-gary-50 mt-10 mx-6 overflow-auto">
               <table
                 class="table-auto w-full border-collapse border border-slate-400 drop-shadow-md m-auto overflow-x-hidden"
               >
@@ -31,7 +31,7 @@
                   <tr>
                     <th class="border border-slate-300 px-2 py-2">Name</th>
                     <th class="border border-slate-300 px-2 py-2">Reminder</th>
-                    <th class="border border-slate-300 px-2 py-2">Date</th>
+                    <!-- <th class="border border-slate-300 px-2 py-2">Date</th> -->
                     <th class="border border-slate-300 px-2 py-2">Status</th>
                     <th class="border border-slate-300 px-2 py-2">Note</th>
                     <th class="border border-slate-300 px-2 py-2">Action</th>
@@ -41,9 +41,9 @@
                   <tr v-for="(rem, index) in lead.reminder" :key="rem.index">
                     <td class="border border-slate-300 px-2 py-2">dfd</td>
                     <td class="border border-slate-300 px-2 py-2">{{ rem.reminder }}</td>
-                    <td class="border border-slate-300 px-2 py-2">
+                    <!-- <td class="border border-slate-300 px-2 py-2">
                       {{ rem.reminder_date }}
-                    </td>
+                    </td> -->
                     <td class="border border-slate-300 px-2 py-2">{{ rem.status }}</td>
                     <td class="border border-slate-300 px-2 py-2">{{ rem.note }}</td>
                     <td class="border border-slate-300 px-2 py-2"> <Link :href="route('admin.reminder.destroy',rem.id)" method="delete" class="bg-blue-700 rounded-xl py-2 px-4 text-white"><i class="fa-solid fa-trash"></i></Link> </td>
